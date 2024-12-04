@@ -1,11 +1,5 @@
 import re
 
-# thoughts:
-# check in every direction (like queen in chess) starting from every x
-# check until either no letters left or you have found your first xmas occurance
-# it can be spelled backwards or forwards
-# so xmas or samx
-# and it can be interrupted (?)
 
 directions = ["up", "down", "left", "right", "up_right", "up_left", "down_right", "down_left"]
 
@@ -111,7 +105,7 @@ def search_in_direction(i, already_found, direction, word):
     if re.match("^" + already_found + curr_char, word):
         already_found += curr_char
     else:
-        return False # I don't get what they meant by overlapping bc this stops the recognition of overlapping words (as I understand them)
+        return False 
 
 
     return search_in_direction(new_i, already_found, direction, word)
