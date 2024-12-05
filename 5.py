@@ -33,7 +33,7 @@ def check_if_report_valid(report):
 
         # print(order_rules[curr_page])
 
-    
+
         for j in range(0, i):
             # order_rules[curr_page] are all the pages that have to be after curr_page or not exist at all
             if report[j] in order_rules[curr_page]: 
@@ -54,5 +54,32 @@ def part_one():
 
     print("Part one: ", result)
 
+def fix_report(report):
+    while not check_if_report_valid(report):
+        for i in range(0, len(report)):
+            page = report[i]
+            if page not in order_rules:
+                report.pop(i)
+                report.append(page)
+            else:
+                for larger_page in order_rules[page]:
+                    if larger_page not in report:
+                        continue
+                    larger_page_i = report.index(larger_page)
+                    if larger_page_i < i:
+                        report.pop(larger_page_i)
+                        report.insert(i+1, larger_page)
 
-part_one()
+def part_two():
+    result = 0
+    for r in reports:
+        if not check_if_report_valid(r):
+            fix_report(r)
+            result += get_middle(r)
+            print(get_middle(r))
+
+    print("Part two: ", result)
+
+
+# part_one()
+part_two()
