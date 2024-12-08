@@ -4,7 +4,7 @@ class Position():
         self.y = y
 
     def __str__(self):
-        print(f"({self.x},{self.y})")
+        return f"({self.x},{self.y})" 
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
