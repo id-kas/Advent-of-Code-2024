@@ -4,7 +4,7 @@ class Position():
         self.y = y
 
     def __str__(self):
-        return f"({self.x},{self.y})"
+        return f"({self.x},{self.y})" 
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
@@ -16,10 +16,13 @@ class Position():
     def to_index(self):
         return self.y * line_length + self.x
 
+    def distance(self, other):
+        return ((self.x - other.x)**2 + (self.y - other.y)**2)**0.5
 
 
 
-with open("6_input.txt") as file:
+
+with open("8_example.txt") as file:
     first_line = file.readline()
     line_length = len(first_line)
     content = first_line + file.read()
